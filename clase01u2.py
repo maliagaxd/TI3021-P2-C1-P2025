@@ -1,15 +1,17 @@
 class Cliente:
-    def __init__(self,nombre: str,rut: str, edad: int):
-        self.__nombre = nombre
-        self.__rut = rut
-        self.__edad = edad
-    @property
-    def nombre(self):
-        return self.__nombre
+    def __init__(self,numero_pedido: int, fecha: str, total_a_pagar: float):
+        self.__numero_pedido = numero_pedido
+        self.__fecha = fecha
+        self.__total_a_pagar = total_a_pagar
+    @staticmethod
+    def procesar(procesar):
+        print(procesar)
 
-cliente1: Cliente = Cliente(
-    nombre="Manuel",
-    rut="20499483-8",
-    edad=25
-    )
-print(cliente1.nombre)
+class Pedido_en_local(Cliente):
+    pass
+
+class Pedido_para_llevar(Cliente):
+    pass
+
+class Pedido_a_domicilio(Cliente):
+    pass
