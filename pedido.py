@@ -7,6 +7,9 @@ class Pedido:
 
     def procesar(self):
         return "Procesando su pedido :)"
+    
+    def obtener_informacion(self):
+        return f"Numero Pedido: {self.__numero_pedido}\nNombre del Cliente: {self.cliente.obtener_nombre()}"
 
 class PedidoEnLocal(Pedido):
     def __init__(self, numero_pedido, fecha, total_a_pagar,cliente,numero_de_mesa: int, cantidad_persona: int):
@@ -36,9 +39,11 @@ class Cliente:
     def __init__(self, nombre: str, rut: str):
         self.__nombre = nombre
         self.__rut = rut
-    def obtener_datos(self):
-        return f"Nombre: {self.__nombre}\nRut: {self.__rut}"
+    def obtener_nombre(self):
+        return self.__nombre
+    def obtener_rut(self):
+        return self.__rut
     
 cliente_1 = Cliente("Manuel Aliaga","12345678-9")
 pedido_1 = PedidoADomicilio(1001,"07/10/2025",5000.0,cliente_1,"Mi casa #999", "Chamo")
-print(pedido_1.cliente.obtener_datos())
+print(pedido_1.obtener_informacion())
