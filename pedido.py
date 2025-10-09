@@ -6,10 +6,8 @@ class Pedido:
         self.cliente = cliente
 
     def procesar(self):
-        return "Procesando su pedido :)"
-    
-    def obtener_informacion(self):
         return f"Numero Pedido: {self.__numero_pedido}\nNombre del Cliente: {self.cliente.obtener_nombre()}\nFecha: {self.__fecha}\nTotal: ${self.__total_a_pagar}"
+    
 class PedidoEnLocal(Pedido):
     def __init__(self, numero_pedido, fecha, total_a_pagar,cliente,numero_de_mesa: int, cantidad_persona: int):
         super().__init__(numero_pedido, fecha, total_a_pagar,cliente)
