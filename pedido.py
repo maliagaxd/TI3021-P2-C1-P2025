@@ -17,7 +17,7 @@ class PedidoEnLocal(Pedido):
         self.__numero_de_mesa = numero_de_mesa
         self.__cantidad_persona = cantidad_persona
     def procesar(self):
-        return "Procesando su pedido en el local"
+        return super().obtener_informacion() + "\nNumero de mesa: " + str(self.__numero_de_mesa) + "\nCantidad de personas: " + str(self.__cantidad_persona)
 
 class PedidoParaLlevar(Pedido):
     def __init__(self, numero_pedido, fecha, total_a_pagar,cliente,tiempo_estimado: int):
@@ -25,7 +25,7 @@ class PedidoParaLlevar(Pedido):
         self.__tiempo_estimado = tiempo_estimado
 
     def procesar(self):
-        return "Procesando su pedido para llevar"
+        return super().obtener_informacion() + "\nTiempo estimado: "+ str(self.__tiempo_estimado)
 
 class PedidoADomicilio(Pedido):
     def __init__(self, numero_pedido, fecha, total_a_pagar,cliente,direccion: str, nombre_repartidor: str):
@@ -33,8 +33,7 @@ class PedidoADomicilio(Pedido):
         self.__direccion = direccion
         self.__nombre_repartidor = nombre_repartidor
     def procesar(self):
-        return "Procesando su pedido a domicilio"
-    
+        return super().obtener_informacion() + "\nDireccion: " + self.__direccion + "\nNombre del Repartidor: " + self.__nombre_repartidor    
 class Cliente:
     def __init__(self, nombre: str, rut: str):
         self.__nombre = nombre
@@ -45,5 +44,5 @@ class Cliente:
         return self.__rut
     
 cliente_1 = Cliente("Manuel Aliaga","12345678-9")
-pedido_1 = PedidoADomicilio(1001,"07/10/2025",5000.0,cliente_1,"Mi casa #999", "Chamo")
-print(pedido_1.obtener_informacion())
+pedido_1 = PedidoEnLocal(1001,"07/10/2025",5000.0,cliente_1,54,4)
+print(pedido_1.procesar())
