@@ -9,8 +9,7 @@ class Pedido:
         return "Procesando su pedido :)"
     
     def obtener_informacion(self):
-        return f"Numero Pedido: {self.__numero_pedido}\nNombre del Cliente: {self.cliente.obtener_nombre()}"
-
+        return f"Numero Pedido: {self.__numero_pedido}\nNombre del Cliente: {self.cliente.obtener_nombre()}\nFecha: {self.__fecha}\nTotal: ${self.__total_a_pagar}"
 class PedidoEnLocal(Pedido):
     def __init__(self, numero_pedido, fecha, total_a_pagar,cliente,numero_de_mesa: int, cantidad_persona: int):
         super().__init__(numero_pedido, fecha, total_a_pagar,cliente)
@@ -34,6 +33,7 @@ class PedidoADomicilio(Pedido):
         self.__nombre_repartidor = nombre_repartidor
     def procesar(self):
         return super().obtener_informacion() + "\nDireccion: " + self.__direccion + "\nNombre del Repartidor: " + self.__nombre_repartidor    
+    
 class Cliente:
     def __init__(self, nombre: str, rut: str):
         self.__nombre = nombre
